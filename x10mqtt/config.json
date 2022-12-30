@@ -1,6 +1,6 @@
 {
   "name": "X10 MQTT Gateway",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "slug": "x10mqtt",
   "description": "MQTT gateway for the X10 CM11 and CM17",
   "url": "https://github.com/mmotley999/hassos-addons",
