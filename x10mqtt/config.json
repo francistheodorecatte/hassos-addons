@@ -8,7 +8,7 @@
   "uart": true,
   "map": ["config:rw", "ssl"],
   "options": {
-    "serial_port": "/dev/ttyUSB0",
+    "serial_port": "",
     "mqtt_host": "core-mosquitto",
 	"cm17_in_use": false,
     "mqtt_port": 1883,
@@ -18,7 +18,7 @@
 	"stat_topic": "x10/stat"
   },
   "schema": {
-    "serial_port": "str",
+    "serial_port": "device(subsystem=tty)",
 	"cm17_in_use": "bool",
     "mqtt_host": "str",
 	"mqtt_port": "int",
