@@ -1,4 +1,4 @@
-# mmotley999 Add-Ons
+# mattpwalsh Add-Ons
 
 ## Installation
 
@@ -7,7 +7,7 @@ Add this repository to your Home Assistant installation by going to Supervisor -
 Add the following URL:
 
 ```txt
-https://github.com/mmotley999/hassos-addons
+https://github.com/mattpwalsh/hassos-addons
 ```
 
 ## Add-on Provided by this repository
