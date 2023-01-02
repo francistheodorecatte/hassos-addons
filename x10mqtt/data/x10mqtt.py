@@ -219,7 +219,7 @@ def on_message(client, userdata, message):
     result = execute(client, command, hc)
   elif command_type == "DIM":
     print("Sending X10 dim command to homecode "+hc);
-    result = execute(client, )
+    result = dim(client, hc, command)
   else:
     print("Invalid command or home code")
 
