@@ -29,5 +29,6 @@
 	"cmd_topic": "str",
 	"stat_topic": "str",
   "dim_topic": "str"
-  }
+  },
+  "image": "mattpwalsh/{arch}-hassos-x10mqtt"
 }
