@@ -11,24 +11,23 @@
   "options": {
     "serial_port": "",
     "mqtt_host": "core-mosquitto",
-	"cm17_in_use": false,
+	  "cm17_in_use": false,
     "mqtt_port": 1883,
     "mqtt_user": "",
-	"mqtt_pass": "",
-	"cmd_topic": "x10/cmd",
-	"stat_topic": "x10/stat",
-  "dim_topic": "x10/dim"
+	  "mqtt_pass": "",
+	  "cmd_topic": "x10/cmd",
+	  "stat_topic": "x10/stat",
+    "dim_topic": "x10/dim"
   },
   "schema": {
     "serial_port": "device(subsystem=tty)",
-	"cm17_in_use": "bool",
+	  "cm17_in_use": "bool",
     "mqtt_host": "str",
-	"mqtt_port": "int",
+	  "mqtt_port": "int",
     "mqtt_user": "str?",
-	"mqtt_pass": "str?",
-	"cmd_topic": "str",
-	"stat_topic": "str",
-  "dim_topic": "str"
-  },
-  "image": "mattpwalsh/{arch}-hassos-x10mqtt"
+	  "mqtt_pass": "str?",
+	  "cmd_topic": "str",
+	  "stat_topic": "str",
+    "dim_topic": "str"
+  }
 }
