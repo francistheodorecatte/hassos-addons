@@ -62,6 +62,18 @@ try:
 except:
   cmdtopic = "x10/cmd"
 
+# dimtopic for dimmer commands.  Housecode is appended.
+# e.g. 'x10/dim/A1' to command A1 device.
+#
+# Payload is a numeric value 0-255
+#
+# Defaults to 'x10/dim' if not defined
+#
+try:
+  dimtopic = os.environ['MQTTDIMTOPIC']
+except:
+  dimtopic = "x10/dim"
+
 #
 # status topic is for status updates
 #
@@ -103,6 +115,18 @@ def execute(client, cmd, housecode):
     print("Error running heyu, return code: "+str(result.returncode))
   print("Device Status Update: "+stattopic+"/"+housecode.lower())
   client.publish(stattopic+"/"+housecode.lower(),cmd.upper(),retain=True)
+  return (result.returncode)
+
+def dim(client, housecode, dimvalue):
+  heyucmd = "dim"
+  if cm17:
+    heyucmd = "fdim"
+  heyudim = round((int(dimvalue) * 63)/256, 0)
+  result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), heyudim])
+  if result.returncode:
+    print("Error running heyu, return code: "+str(result.returncode))
+  print("Device Status Update: "+stattopic+"/"+housecode.lower())
+  client.publish(stattopic+"/"+housecode.lower(), dimvalue ,retain=True)
   return (result.returncode)
 
 #
@@ -167,6 +191,7 @@ def on_connect (client, userdata, flags, rc):
 
   print("Connected to MQTT broker, result code "+str(rc))
   client.subscribe(cmdtopic+"/+")
+  client.subscribe(dimtopic+"/+")
 
 #
 # Callback for MQTT message received
@@ -184,6 +209,7 @@ def on_message(client, userdata, message):
 
   # Get the homecode and convert it to upper case
   hc = topiclist[len(topiclist)-1].upper()
+  command_type = topiclist[len(topiclist)-2].upper()
 
 
   # Check that everything is right
@@ -191,6 +217,9 @@ def on_message(client, userdata, message):
   if command in ["ON", "OFF"] and hcpattern.match(hc):
     print("Sending X10 command to homecode "+hc)
     result = execute(client, command, hc)
+  elif command_type == "DIM":
+    print("Sending X10 dim command to homecode "+hc);
+    result = execute(client, )
   else:
     print("Invalid command or home code")
 
