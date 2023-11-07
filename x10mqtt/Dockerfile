@@ -32,7 +32,7 @@ RUN \
     \
 	&& make -j$(nproc) \
     \
-    && mkdir -p /etc/heyu 
+    && mkdir -p /etc/heyu \
     && touch /etc/heyu/x10.conf \
     && make install \
     \
