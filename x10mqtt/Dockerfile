@@ -26,7 +26,7 @@ RUN \
     && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/v2.10.3.tar.gz" \
         | tar zxvf - -C /opt/build \
     \
-    && cd /opt/build/heyu-2.11-rc3/ \
+    && cd /opt/build/heyu-2.10.3/ \
 	\
     && ./configure --sysconfdir=/etc CFLAGS="-fcommon"\
     \
