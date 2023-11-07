@@ -15,7 +15,7 @@ RUN \
         tar \
 		curl \
 		build-base \
-  		g++ \
+  		musl-dev \
     \
     && apk add --no-cache \
 	    python3 \
