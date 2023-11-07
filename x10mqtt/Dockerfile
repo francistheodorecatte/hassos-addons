@@ -15,6 +15,7 @@ RUN \
         tar \
 		curl \
 		build-base \
+  		g++ \
     \
     && apk add --no-cache \
 	    python3 \
@@ -23,10 +24,10 @@ RUN \
 	&& pip3 install paho-mqtt \
     \
     && mkdir -p /opt/build \
-    && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/refs/tags/v2.10.2.tar.gz" \
+    && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/refs/tags/v2.10.3.tar.gz" \
         | tar zxvf - -C /opt/build \
     \
-    && cd /opt/build/heyu-2.10.2/ \
+    && cd /opt/build/heyu-2.10.3/ \
 	\
     && ./Configure \
     \
