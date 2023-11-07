@@ -32,6 +32,7 @@ RUN \
     \
 	&& make -j$(nproc) \
     \
+    && mkdir -p /etc/heyu \
     && make install \
     \
     && mkdir -p /usr/local/var/lock \
