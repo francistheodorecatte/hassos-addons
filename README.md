@@ -1,4 +1,4 @@
-# mattpwalsh Add-Ons
+# franktcatte Add-Ons
 
 ## Installation
 
@@ -7,18 +7,14 @@ Add this repository to your Home Assistant installation by going to Supervisor -
 Add the following URL:
 
 ```txt
-https://github.com/mattpwalsh/hassos-addons
+https://github.com/francistheodorecatte/hassos-addons
 ```
 
 ## Add-on Provided by this repository
 
 ### x10mqtt
 
-A simple MQTT gateway for the X10 CM11a serial interface.  Supports turning on and off X10 devices using MQTT topics.
-
-### x10mqttbeta
-
-Beta/testing version of the x10mqtt repo.  Currently used for testing CM17A support.
+A simple MQTT gateway for X10 CM11 or CM17A serial interfaces.  Supports turning on and off or dimming X10 devices using MQTT topics.
 
 ## Support
 
