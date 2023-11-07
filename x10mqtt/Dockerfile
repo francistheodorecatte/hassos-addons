@@ -15,7 +15,8 @@ RUN \
         tar \
 		curl \
 		build-base \
-  		musl-dev \
+  		alpine-sdk \
+    		musl-dev \
     		linux-headers \
     \
     && apk add --no-cache \
