@@ -12,7 +12,7 @@ CM11-compatible serial interfaces include:
 - Leviton HC60RX (NA)
 - JV Digital Engineering XTB-232 (NA/EU)
 
-When using a CM11, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
+When using a CM11 interface , the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
 ON, OFF, and DIM commands are supported.
 
@@ -139,6 +139,8 @@ Note that if you intend on using a CM17A with certain powerline-only modules (su
 
 - If your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11A/CM12U/HD11A/HC60RX serial interface models, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
+
+It's recommended to avoid the CM11A and its derivatives in a 'modern' home (modern is codeword for 'full of switching devices') for reliability reasons unless you're handy with a soldering iron; the XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
