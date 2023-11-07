@@ -4,13 +4,13 @@
 
 This add-on provides MQTT control of X10 devices for the CM11 and CM17A "Firecracker" RS232 Serial interface to X10.
 
-CM11 compatible interfaces include:
+CM11-compatible serial interfaces include:
 
-- CM11A
-- CM12U
-- HD11A
-- HC60RX
-- XTB-232
+- X10 CM11A (NA)
+- X10 CM12U (EU)
+- IBM HD11A (NA)
+- Leviton HC60RX (NA)
+- JV Digital Engineering XTB-232 (NA/EU)
 
 When using a CM11, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
@@ -129,6 +129,10 @@ Note that if you intend on using a CM17A with certain powerline-only modules (su
 
 - If your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11A/CM12U/HD11A/HC60RX serial interface models, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
+
+### Slow/intermittent CM11 Serial Connection Issues
+
+May be caused when using a Prolific USB-to-Serial adapter chipset, such as the PL2302 or PL2303. Using a (genuine) FTDI chipset is recommended to mitigate this.
 
 ## Support
 
