@@ -30,7 +30,7 @@ RUN \
 	\
     && ./Configure linux \
     \
-	&& make -j$(nproc) \
+	&& make -j "$(nproc)" \
     \
     && make install \
     \
