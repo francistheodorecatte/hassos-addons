@@ -15,9 +15,6 @@ RUN \
         tar \
 		curl \
 		build-base \
-  		alpine-sdk \
-    		musl-dev \
-    		linux-headers \
     \
     && apk add --no-cache \
 	    python3 \
@@ -31,7 +28,7 @@ RUN \
     \
     && cd /opt/build/heyu-2.10.3/ \
 	\
-    && sh ./Configure linux \
+    && sh ./Configure darwin \
     \
     	&& sed -i.bak 's/^M//g;s|CFLAGS\ =\ *|&-fcommon\ |' Makefile \
 	&& make -j$(nproc) \
