@@ -29,7 +29,7 @@ RUN \
     \
     && cd /opt/build/heyu-2.10.3/ \
 	\
-    && ./Configure \
+    && sh ./Configure generic \
     \
 	&& make -j$(nproc) \
     \
