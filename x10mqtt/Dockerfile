@@ -16,6 +16,7 @@ RUN \
 		curl \
 		build-base \
   		musl-dev \
+    		linux-headers \
     \
     && apk add --no-cache \
 	    python3 \
@@ -29,7 +30,7 @@ RUN \
     \
     && cd /opt/build/heyu-2.10.3/ \
 	\
-    && sh ./Configure generic \
+    && sh ./Configure linux \
     \
 	&& make -j$(nproc) \
     \
