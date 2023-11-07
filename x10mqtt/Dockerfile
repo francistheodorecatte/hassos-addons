@@ -28,9 +28,9 @@ RUN \
     \
     && cd /opt/build/heyu-2.10.3/ \
 	\
-    && ./Configure linux \
+    && ./Configure \
     \
-	&& make -j "$(nproc)" \
+	&& make -j$(nproc) \
     \
     && make install \
     \
