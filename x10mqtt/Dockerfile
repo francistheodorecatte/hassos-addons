@@ -28,7 +28,7 @@ RUN \
     \
     && cd /opt/build/heyu-2.10.3/ \
 	\
-    && ./configure --sysconfdir=/etc \
+    && ./Configure --sysconfdir=/etc CFLAGS="-fcommon" \
     \
 	&& make -j$(nproc) \
     \
