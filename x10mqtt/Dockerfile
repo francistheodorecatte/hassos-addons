@@ -23,7 +23,7 @@ RUN \
 	&& pip3 install paho-mqtt \
     \
     && mkdir -p /opt/build \
-    && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/v2.11-rc3.tar.gz" \
+    && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/v2.10.3.tar.gz" \
         | tar zxvf - -C /opt/build \
     \
     && cd /opt/build/heyu-2.11-rc3/ \
