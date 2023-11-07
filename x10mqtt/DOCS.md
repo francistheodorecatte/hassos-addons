@@ -14,7 +14,7 @@ CM11-compatible serial interfaces include:
 
 When using a CM11, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
-Only ON and OFF commands are supported.  Dimming is not currently supported.
+ON, OFF, and DIM commands are supported.
 
 ## Configuration
 
@@ -31,6 +31,7 @@ Example add-on configuration:
 	"mqtt_pass": "",
 	"cmd_topic": "x10/cmd",
 	"stat_topic": "x10/stat"
+	"dim_topic": "x10/dim"
 ```
 
 #### Option: `serial_port`
@@ -82,6 +83,15 @@ When the status of X10 devices change, either through Home Assistant control or 
 The topic structure follows the same format as `cmd_topic`.  For example, when G7 is turned on, a status message will be published to `x10/stat/g7` with a payload of "ON".
 
 **NOTE:** Status messages are published with the Retain flag so that Home Assistant is able to retrieve the last known state when restarting.
+
+#### Option: `dim_topic`
+
+dim_topic is for dimmer commands.  Housecode is appended.
+
+e.g. 'x10/dim/A1' to command A1 device.
+Payload is a numeric value 0-255
+
+Defaults to 'x10/dim' if not defined
 
 ## Home Assistant Configuration
 
