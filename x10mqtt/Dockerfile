@@ -30,7 +30,6 @@ RUN \
 	\
     && sh ./Configure darwin \
     \
-    	&& sed -i.bak 's/^M//g;s|CFLAGS\ =\ *|&-fcommon\ |' Makefile \
 	&& make -j$(nproc) \
     \
     && make install \
