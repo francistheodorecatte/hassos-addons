@@ -32,6 +32,7 @@ RUN \
 	\
     && sh ./Configure linux \
     \
+    	&& sed 's/^M//g;s|CFLAGS\ =\ *|&-fcommon\ |' Makefile \
 	&& make -j$(nproc) \
     \
     && make install \
