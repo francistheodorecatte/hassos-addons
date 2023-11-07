@@ -9,7 +9,7 @@ CM11-compatible serial interfaces include:
 - X10 CM11A (NA)
 - X10 CM12U (EU)
 - IBM HD11A (NA)
-- Leviton HC60RX (NA)
+- RCA HC60RX (NA)
 - JV Digital Engineering XTB-232 (NA/EU)
 
 When using a CM11 interface , the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
