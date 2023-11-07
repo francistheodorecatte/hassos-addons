@@ -4,6 +4,14 @@
 
 This add-on provides MQTT control of X10 devices for the CM11 and CM17A "Firecracker" RS232 Serial interface to X10.
 
+CM11 compatible interfaces include:
+
+- CM11A
+- CM12U
+- HD11A
+- HC60RX
+- XTB-232
+
 When using a CM11, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
 Only ON and OFF commands are supported.  Dimming is not currently supported.
@@ -114,6 +122,13 @@ In most cases, you can resync Home Assistant and your X10 device by toggling the
 You can use both the CM17A for transmitting codes and a CM11 for receiving X10 updates simultaenously!  Simply connect the CM11 to the DB9 pass-through port on the CM17A module.
 
 This is helpful if you have a CM11 that is not transmitting properly, or you simply wish to use RF transmission instead of power line for control.  Using the CM11 in tandem allows for X10 commands outside Home Assistant to be read by the add-on to mitigate the out-of-sync issues discussed in the section above.
+
+Note that if you intend on using a CM17A with certain powerline-only modules (such as the WS467/WS469), you will also need an RF-to-powerline transceiver such as the TM751.
+
+### Notes for X10 Newcomers
+
+- If your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
+- If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11A/CM12U/HD11A/HC60RX serial interface models, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
 
 ## Support
 
