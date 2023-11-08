@@ -2,7 +2,7 @@
 
 
 
-This add-on provides MQTT control of X10 devices for the CM11 and CM17A "Firecracker" RS232 Serial interface to X10.
+This add-on provides MQTT control of X10 devices via CM11 and/or CM17A "Firecracker" RS232 serial interfaces and [heyu](https://github.com/HeyuX10Automation/heyu).
 
 CM11-compatible serial interfaces include:
 
@@ -10,21 +10,25 @@ CM11-compatible serial interfaces include:
 - X10 CM12U (EU)
 - IBM HD11A (NA)
 - RCA HC60RX (NA)
+- X10 CM10A (NA)
+- IBM HD16 (NA)
 - JV Digital Engineering XTB-232 (NA/EU)
 
-When using a CM11 interface , the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
+Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which heyu does not support and will never support.
+
+When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
 ON, OFF, and DIM commands are supported.
 
 ## Configuration
 
-Example add-on configuration:
+Example add-on configuration via yaml:
 
 
 
 ```json
     "serial_port": "/dev/ttyUSB0",
-    "cm17_in_use:" false,
+    "cm17_in_use": false,
     "mqtt_host": "core-mosquitto",
     "mqtt_port": 1883,
     "mqtt_user": "",
@@ -34,6 +38,8 @@ Example add-on configuration:
 	"dim_topic": "x10/dim"
 ```
 
+The add-on can also be configured in Home Assistant web interface, via the "Configuration" tab.
+
 #### Option: `serial_port`
 
 The serial port for the CM11A interface, which is usually connected via a USB-to-Serial device.  You can find this by going to "Supervisor" screen, selecting the "System" tab.   On the "Host" card, select the 3-dot option and select "Hardware"
@@ -42,9 +48,9 @@ The serial port for the CM11A interface, which is usually connected via a USB-to
 
 Boolean.  
 
-If you are using a CM17A "Firecracker" module as your primary controller, enable this option (set to '**true**').  
+If you are using a CM17A "Firecracker" interface as your primary controller, enable this option (set to '**true**').  
 
-If you are *only* using a CM11 module, set to '**false**'. 
+If you are *only* using a CM11 interface, set to '**false**'. 
 
 Note that you can run the CM11 and CM17A together (see below for details).  Normally you would still set this option to **true** to use the CM17A as the primary X10 controller.
 
@@ -133,18 +139,18 @@ You can use both the CM17A for transmitting codes and a CM11 for receiving X10 u
 
 This is helpful if you have a CM11 that is not transmitting properly, or you simply wish to use RF transmission instead of power line for control.  Using the CM11 in tandem allows for X10 commands outside Home Assistant to be read by the add-on to mitigate the out-of-sync issues discussed in the section above.
 
-Note that if you intend on using a CM17A with certain powerline-only modules (such as the WS467/WS469), you will also need an RF-to-powerline transceiver such as the TM751.
+Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751.
 
 ### Notes for X10 Newcomers
 
-- If your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
-- If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11A/CM12U/HD11A/HC60RX serial interface models, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
+- If you have split-phase or three phase power (such as in North American or German homes, respectively) and your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater near or at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E. This usually shows up as an intermittent problem, and can be diagnosed by turning on a 240v or 400v appliance such as baseboard electric heat, heatpumps, electric stoves/ranges, or a resistive electric dryer to couple the phases together, before testing an X10 powerline transmission.
+- If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances on the same breaker. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11 reference designs, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
 
-It's recommended to avoid the CM11A and its derivatives in a 'modern' home (modern is codeword for 'full of switching devices') for reliability reasons unless you're handy with a soldering iron; the XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions.
+It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 derivative are also more reliable, but are much harder to come by.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
-May be caused when using a Prolific USB-to-Serial adapter chipset, such as the PL2302 or PL2303. Using a (genuine) FTDI chipset is recommended to mitigate this.
+May be caused when using a Prolific USB-to-Serial adapter chipset, such as the PL2302 or PL2303. Using a (genuine) FTDI chipset is recommended to mitigate this. If at all possible, use a hardware UART for the best compatibility.
 
 ## Support
 
