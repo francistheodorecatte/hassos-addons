@@ -141,12 +141,18 @@ This is helpful if you have a CM11 that is not transmitting properly, or you sim
 
 Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751.
 
+## Troubleshooting and extra info
+
 ### Notes for X10 Newcomers
 
-- If you have split-phase or three phase power (such as in North American or German homes, respectively) and your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive or active phase amplifier/repeater near or at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E. This usually shows up as an intermittent problem, and can be diagnosed by turning on a 240v or 400v appliance such as baseboard electric heat, heatpumps, electric stoves/ranges, or a resistive electric dryer to couple the phases together, before testing an X10 powerline transmission.
+- If you have split-phase or three phase power (such as in North American or German homes, respectively) and your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive coupler or active phase amplifier/repeater near or at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
+	- This usually shows up as an intermittent problem, and can be diagnosed by turning on a 240v or 400v appliance such as baseboard electric heat, heatpumps, electric stoves/ranges, or a resistive electric dryer to couple the phases together, before testing an X10 powerline transmission.
+	- Do not, **under any circumstance**, use a bare capacitor-based phase coupler! These are dangerous for reasons beyond the scope of this project, suffice to say, you should pay the extra money for an off-the-shelf coupler/repeater module for safety reasons.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances on the same breaker. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11 reference designs, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
 
-It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 derivative are also more reliable, but are much harder to come by.
+### Hardware Reliability
+
+It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel are also more reliable, but are much harder to come by.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
