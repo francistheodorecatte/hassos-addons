@@ -1,6 +1,6 @@
-# franktcatte Add-Ons
+# franktcatte's Home Assistant Add-Ons
 
-## Installation
+## Repository Installation
 
 Add this repository to your Home Assistant installation by going to Supervisor -> Add-on Store, selecting the options icon (3 dots) in the upper-right, and click Repositories.
 
@@ -18,7 +18,7 @@ A simple MQTT gateway for X10 CM11 or CM17A serial interfaces.  Supports turning
 
 ## Support
 
-Please open an issue here on Github.
+Do not.
 
 ## License
 
