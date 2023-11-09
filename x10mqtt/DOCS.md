@@ -150,13 +150,32 @@ Note that if you intend on using a CM17A with certain powerline only modules (us
 	- Do not, **under any circumstance**, use a bare capacitor-based phase coupler! These are dangerous for reasons beyond the scope of this project, suffice to say, you should pay the extra money for an off-the-shelf coupler/repeater module for safety reasons.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances on the same breaker. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11 reference designs, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
 
-### Hardware Reliability
-
-It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel are also more reliable, but are much harder to come by.
-
 ### Slow/intermittent CM11 Serial Connection Issues
 
 May be caused when using a Prolific USB-to-Serial adapter chipset, such as the PL2302 or PL2303. Using a (genuine) FTDI chipset is recommended to mitigate this. If at all possible, use a hardware UART for the best compatibility.
+
+### Resetting/Unlocking the CM11A
+
+Per the [official X10 wiki page on the matter](https://kbase.x10.com/wiki/CM11A_Unlock_Procedure), if your CM11A does not respond to commands:
+
+>     1. Unplug the CM11A Computer Interface and remove its batteries.
+>     2. Plug the Interface back into the outlet, without battery power.
+>     3. Plug your Transceiver (the module with the silver antenna) into the pass-through outlet of the CM11A.
+>     4. Push the physical ON/OFF button on the Transceiver a couple times to hear the click of the relay. This will ensure you have power to the Interface.
+>     5. Using any standard X10 remote control, turn the transceiver On and Off several times. Again, you should hear the unit audibly “clicking”.
+>     6. Return to the TOOLS | TEST COMMUNICATIONS menu, and select TEST to verify successful communication to the CM11A has been restored.
+
+Note that this procedure requires a transceiver or similar module with a TEST or ON/OFF button that transmits ON/OFF messages to device code A1, like the TM571. This also applies to any of the white label rebrands of the CM11A.
+
+The only difference in this application would be step six, where you retry transmitting via MQTT and heyu; the offical instructions assume you are using [ActiveHome](https://kbase.x10.com/wiki/ActiveHome). Step 5 is also redundant.
+
+For best results leave the CM11A unplugged with the batteries removed for 10-15 minutes prior to plugging it back into an outlet.
+
+If this procedure does not work, you either have a very noisy power system (see the notes above), or your CM11A is faulty. Try moving the CM11A to an outlet somewhere 'quiet' before giving up on it.
+
+### Hardware Reliability
+
+It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the same case molding and FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel are also more reliable, but are much harder to come by.
 
 ## Support
 
