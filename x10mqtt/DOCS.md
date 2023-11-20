@@ -14,7 +14,7 @@ CM11-compatible serial interfaces include:
 - IBM HD16 (NA)
 - JV Digital Engineering XTB-232 (NA/EU)
 
-Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which heyu does not support and will never support.
+Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the CM15, heyu does not support and will never support.
 
 When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
@@ -139,7 +139,7 @@ You can use both the CM17A for transmitting codes and a CM11 for receiving X10 u
 
 This is helpful if you have a CM11 that is not transmitting properly, or you simply wish to use RF transmission instead of power line for control.  Using the CM11 in tandem allows for X10 commands outside Home Assistant to be read by the add-on to mitigate the out-of-sync issues discussed in the section above.
 
-Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751.
+Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751 or RR501.
 
 ## Troubleshooting and extra info
 
