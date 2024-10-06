@@ -1,4 +1,9 @@
-## x10mqtt version v0.3.3
+## x10mqtt version v0.3.3-2
+
+###  Changes since v0.3.3 
+
+- actually fix dim topic exceptions (HA passes a float; paho-mqtt expects a string.)
+  
 
 ###  Changes since v0.3.2
 
