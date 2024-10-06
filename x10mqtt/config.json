@@ -1,6 +1,6 @@
 {
   "name": "X10 MQTT Gateway",
-  "version": "0.3.3-1",
+  "version": "0.3.3-2",
   "slug": "x10mqtt",
   "init": false,
   "description": "MQTT gateway for the X10 CM11 and CM17",
