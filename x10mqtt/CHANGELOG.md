@@ -1,4 +1,10 @@
-## x10mqtt version v0.3.2
+## x10mqtt version v0.3.3
+
+###  Changes since v0.3.2
+
+- fix build errors
+- fix dim topic exceptions
+
 
 ###  Changes since v0.3.0
 
