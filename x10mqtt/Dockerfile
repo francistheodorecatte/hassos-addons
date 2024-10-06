@@ -17,10 +17,8 @@ RUN \
 		build-base \
     \
     && apk add --no-cache \
-	    python3 \
-		py3-pip \
-	\
-	&& pip3 install paho-mqtt \
+	   python3 \
+                py3-paho-mqtt \
     \
     && mkdir -p /opt/build \
     && curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/refs/tags/v2.10.3.tar.gz" \
