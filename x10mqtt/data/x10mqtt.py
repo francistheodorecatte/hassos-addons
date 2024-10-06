@@ -122,7 +122,7 @@ def dim(client, housecode, dimvalue):
   if cm17:
     heyucmd = "fdim"
   heyudim = round((int(dimvalue) * 63)/256, 0)
-  result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), heyudim.str()])
+  result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), str(heyudim)])
   if result.returncode:
     print("Error running heyu, return code: "+str(result.returncode))
   print("Device Status Update: "+stattopic+"/"+housecode.lower())
