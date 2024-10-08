@@ -117,12 +117,18 @@ def execute(client, cmd, housecode):
   client.publish(stattopic+"/"+housecode.lower(),cmd.upper(),retain=True)
   return (result.returncode)
 
+# use obdim to dim to level 0-22 after on & full bright w/ the CM11A for best compatibility
+# if the light supports it, xpreset could be used with a value 0-63 (but we won't)
+# with the CM17A, use fdimbo to dim to 0-22 after on
+# for the CM17A w/ PLC lights, you *need* an RF to PLC transceiver
+
 def dim(client, housecode, dimvalue):
-  heyucmd = "dim"
+  heyucmd = "obdim"
   if cm17:
-    heyucmd = "fdim"
-  heyudim = round((int(dimvalue) * 63)/256, 0)
-  result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), str(int(heyudim))])
+    heyucmd = "fdimbo"
+  #take passed 0-255 dim value and round it down to the nearest value 0-22
+  heyudim = str(int(round((dimvalue/11.59), 0)))
+  result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), heyudim])
   if result.returncode:
     print("Error running heyu, return code: "+str(result.returncode))
   print("Device Status Update: "+stattopic+"/"+housecode.lower())

@@ -1,4 +1,9 @@
-## x10mqtt version v0.3.3-3
+## x10mqtt version v0.3.4
+
+### Changes since 0.3.3-3
+
+- change dimming behavior so it works intuitively with all light, at the cost of potentially causing the lights to flicker.
+
 
 ###  Changes since v0.3.3 
 
