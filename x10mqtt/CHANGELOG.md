@@ -1,4 +1,8 @@
-## x10mqtt version v0.3.4
+## x10mqtt version v0.3.4-1
+
+### Changes since 0.3.4
+
+- quick bugfix because str cannot math
 
 ### Changes since 0.3.3-3
 
