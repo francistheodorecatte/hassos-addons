@@ -1,6 +1,6 @@
 {
   "name": "X10 MQTT Gateway",
-  "version": "0.3.4-1",
+  "version": "0.3.5",
   "slug": "x10mqtt",
   "init": false,
   "description": "MQTT gateway for the X10 CM11 and CM17",
@@ -17,7 +17,9 @@
 	  "mqtt_pass": "",
 	  "cmd_topic": "x10/cmd",
 	  "stat_topic": "x10/stat",
-    "dim_topic": "x10/dim"
+          "dim_topic": "x10/dim",
+          "rcsreq_topic": "x10/rcsreq",
+    "rcscmd_topic": "x10/rcscmd"
   },
   "schema": {
     "serial_port": "device(subsystem=tty)",
@@ -28,6 +30,8 @@
 	  "mqtt_pass": "str?",
 	  "cmd_topic": "str",
 	  "stat_topic": "str",
-    "dim_topic": "str"
+          "dim_topic": "str",
+          "rcsreq_topic": "str",
+    "rcscmd_topic": "str",
   }
 }

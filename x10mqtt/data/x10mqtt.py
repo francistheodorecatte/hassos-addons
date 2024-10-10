@@ -8,14 +8,11 @@
 #   and monitoring.
 #
 #   This was written and tested using a CM11a attached via a USB-to-Serial
-#   adapter.  It may work with a CM17 Firecracker as well.
+#   adapter.  It should work with a CM17 Firecracker as well.
 #
 #   This does NOT support the USB devices like the SmartHome PowerLinc 1132B,
 #   or the X10 CM15A.
-#
-#   This only allows ON and OFF commands to X10 appliance modules (or lamp modules).
-#   Sorry, dimmer control is NOT supported.
-#
+##
 # -------------------------------------------------------------------------------
 
 
@@ -29,13 +26,13 @@ try:
 except:
   print("Must define MQTT Broker in configuration!")
   exit(1)
-  
+
 try:
   port = int(os.environ['MQTTPORT'])
 except:
   print("Must define MQTT port in configuration!")
   exit(1)
-  
+
 try:
   mqttuser = os.environ['MQTTUSER']
 except:
@@ -74,7 +71,32 @@ try:
 except:
   dimtopic = "x10/dim"
 
+# rcscmdtopic for RCS TX15-B thermostat protocol. Only needs housecode; unit code is appended automatically.
+# e.g. 'x10/rcscmd/A'
 #
+# Payload is a JSON object with the desired command and a value (if applicable)
+# e.g. '{"fan": "AUTO", "mode": "HEAT", "setpoint": "20", "setback": "FALSE"}
+# see docs for full list of supported commands
+#
+# Defaults to 'x10/rcscmd' if not defined.
+try:
+  rcscmdtopic = os.environ['MQTTRCSREQTOPIC']
+except:
+  rcscmdtopic = "x10/rcscmd"
+
+# rcsreqtopic for RCS TX15-B thermostat protocol. Only needs housecode; unit code 5 is appended automatically.
+# e.g. 'x10/rcsreq/A'
+#
+# Returns a JSON payload, e.g.:
+# {"temperature": "75", "setpoint": "75", "mode": "HEAT", "fan": "AUTO", "sb_mode": "FALSE", "sb_delta": "6"}
+# See RCS protocol for more info.
+#
+# Defaults to 'x10/rcsreq' if not defined
+try:
+  rcsreqtopic = os.environ['MQTTRCSREQTOPIC']
+except:
+  rcsreqtopic = "x10/rcsreq"
+
 # status topic is for status updates
 #
 # We set the payload to "ON" or "OFF" for status updates
@@ -134,6 +156,33 @@ def dim(client, housecode, dimvalue):
   print("Device Status Update: "+stattopic+"/"+housecode.lower())
   client.publish(stattopic+"/"+housecode.lower(), dimvalue ,retain=True)
   return (result.returncode)
+
+# RCS command
+# here be dragons!
+#
+# this will likely require setting up some heyu scripts to act as macros for each command
+# see the RCS TXB16 X10 Protocol Manual for more info.
+#
+# temperature setpoints will require a decoding array and converting celcius to fahrenheit.
+# e.g. 'set temperature to 68' requires, per the RCS protocol:
+# 'heyu preset A3 1'
+# whereas, 'set temperature to 62' requires:
+# 'heyu preset A2 27'
+#
+# commands are slightly easier as they will not require decoding arrays:
+# e.g. 'set mode to heat' only requires:
+# 'heyu preset A4 2'
+#
+# the table for the complete list of setpoints, commands, etc. is on page 8 of the protocol manual.
+
+# RCS request
+#
+# this is a _little bit_ simpler as heyu already has built-in macros for these functions.
+# heyu returns something like this for 'rcs_req preset A5 1' (current temperature):
+# 10/10 11:41:42  Temperature = 75    : hu A0  (_no_alias_)
+# loop through all presets 1-6, parse fields, and build a JSON object to return, e.g.:
+# '{"temperature": "75", "setpoint": "75", "mode": "HEAT", "fan": "AUTO", "sb_mode": "FALSE", "sb_delta": "6"}'
+
 
 #
 # Execute heyu monitor
