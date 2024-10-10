@@ -32,6 +32,6 @@
 	  "stat_topic": "str",
           "dim_topic": "str",
           "rcsreq_topic": "str",
-    "rcscmd_topic": "str",
+    "rcscmd_topic": "str"
   }
 }
