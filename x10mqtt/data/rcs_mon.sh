@@ -5,18 +5,13 @@ hu="${X10_Housecode}5"
 
 # heyu should already check for a unit code of 6, so we just need to check if the preset level is 9.
 # we should have the current temperature (preset 1) due to an auto report, so call the rest ourselves.
-# the thermostat takes 2-3 seconds to respond, hence the sleep between calls to avoid collisions.
+# use rcs_req to have heyu wait for the thermostat to respond, to avoid collisions.
 if [[ $X10_PresetLevel -eq 9 ]]; then
-	heyu preset $hu 2
-	sleep 4
-	heyu preset $hu 3
-	sleep 4
-	heyu preset $hu 4
-	sleep 4
-	heyu preset $hu 5
-	sleep 4
-	heyu preset $hu 6
-	sleep 4
+        heyu rcs_req preset $hu 2
+        heyu rcs_req preset $hu 3
+        heyu rcs_req preset $hu 4
+        heyu rcs_req preset $hu 5
+        heyu rcs_req preset $hu 6
 fi
 
 exit
