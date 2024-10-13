@@ -8,10 +8,16 @@ bashio::log.info "Configuring Heyu..."
 # Generate basic X10 configuration file
 
 SERIAL=$(bashio::config "serial_port")
-echo -e "TTY\t\t  ${SERIAL}\n" > "${HEYUCONFIG}"
-echo -e "RCS_DECODE\t\t  ALL\n" >> "${HEYUCONFIG}"
+HOUSECODE=$(bashio::config "rcs_housecodes")
+echo -e "TTY\t\t${SERIAL}" > "${HEYUCONFIG}"
+echo -e "RCS_DECODE\t\tALL" >> "${HEYUCONFIG}"
+echo -e "START_ENGINE\t\tAUTO" >> "${HEYUCONFIG}"
+for FOO in ${HOUSECODE//,/ }; do
+	echo "SCRIPT -l rcs_mon_${FOO} ${FOO}6 preset rcvi :: /etc/heyu/rcs_mon.sh" >> "${HEYUCONFIG}"
+done
 
-# Export enviornment variables for the main script
+
+# Export environment variables for the main script
 
 export MQTTBROKER=$(bashio::config "mqtt_host")
 export MQTTPORT=$(bashio::config "mqtt_port")
@@ -23,7 +29,7 @@ export MQTTDIMTOPIC=$(bashio::config "dim_topic")
 export MQTTRCSREQTOPIC=$(bashio::config "rcsreq_topic")
 export MQTTRCSCMDTOPIC=$(bashio::config "rcscmd_topic")
 
-# Export environement if CM17 is defined
+# Export environment if CM17 is defined
 
 if bashio::config.true "cm17_in_use" ; then
   bashio::log.info "CM17 is enabled"
@@ -32,7 +38,7 @@ else
   bashio::log.info "CM11 is enabled"
 fi
 
-# Start heyu engine
+# Start heyu engine manually
 heyu engine
 
 # Run main script

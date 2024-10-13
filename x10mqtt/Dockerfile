@@ -46,7 +46,9 @@ RUN \
 # Copy data
 COPY data/x10mqtt.py /usr/local/bin/
 COPY data/run.sh /
+COPY data/rcs_mon.sh /etc/heyu
 RUN chmod a+x /run.sh
+RUN chmod a+x /etc/heyu/rcs_mon.sh
 
 WORKDIR /
 CMD [ "/run.sh" ]

@@ -19,7 +19,8 @@
 	  "stat_topic": "x10/stat",
           "dim_topic": "x10/dim",
           "rcsreq_topic": "x10/rcsreq",
-    "rcscmd_topic": "x10/rcscmd"
+          "rcscmd_topic": "x10/rcscmd",
+    "rcs_housecodes": ""
   },
   "schema": {
     "serial_port": "device(subsystem=tty)",
@@ -32,6 +33,7 @@
 	  "stat_topic": "str",
           "dim_topic": "str",
           "rcsreq_topic": "str",
-    "rcscmd_topic": "str"
+          "rcscmd_topic": "str",
+    "rcs_housecodes": "str"
   }
 }
