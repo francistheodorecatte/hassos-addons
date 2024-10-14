@@ -37,10 +37,10 @@ export MQTTRCSCMDTOPIC=$(bashio::config "rcscmd_topic")
 # Export environment if CM17 is defined
 
 if bashio::config.true "cm17_in_use" ; then
-  bashio::log.info "CM17 is enabled"
-  export CM17="True"
+	bashio::log.info "CM17 is enabled"
+	export CM17="True"
 else
-  bashio::log.info "CM11 is enabled"
+	bashio::log.info "CM11 is enabled"
 fi
 
 # Start heyu engine manually
