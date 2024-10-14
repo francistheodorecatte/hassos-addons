@@ -12,7 +12,7 @@
 #
 #   This does NOT support the USB devices like the SmartHome PowerLinc 1132B,
 #   or the X10 CM15A.
-##
+#
 # -------------------------------------------------------------------------------
 
 
@@ -87,9 +87,9 @@ except:
 # rcsreqtopic for RCS TX15-B thermostat protocol. Only needs housecode; unit code 5 is appended automatically.
 # e.g. 'x10/rcsreq/A'
 #
-# Returns a JSON payload, e.g.:
+# Returns a JSON payload on changes w/ autosend enabled on the device, e.g.:
 # {"temperature": "75", "setpoint": "75", "mode": "HEAT", "fan": "AUTO", "sb_mode": "FALSE", "sb_delta": "6"}
-# See RCS protocol for more info.
+# See RCS protocol for more info on autosend.
 #
 # Defaults to 'x10/rcsreq' if not defined
 try:
@@ -148,8 +148,8 @@ def dim(client, housecode, dimvalue):
   heyucmd = "obdim"
   if cm17:
     heyucmd = "fdimbo"
-  #take passed 0-255 dim value and round it down to the nearest value 0-22
-  heyudim = str(int(round(int(dimvalue)/11.59, 0)))
+  #take passed 0-255 dim value, invert, and round it down to the nearest value 0-22
+  heyudim = str(255 - int(round(int(dimvalue)/11.59, 0)))
   result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), heyudim])
   if result.returncode:
     print("Error running heyu, return code: "+str(result.returncode))
