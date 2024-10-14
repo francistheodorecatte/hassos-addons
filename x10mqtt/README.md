@@ -16,4 +16,5 @@ X10mqtt currently supports the following X10 commands:
 
 ### Planned Features
 - RCS (Residential Control Systems) X10 thermostat control protocol support for the TXB16, with possible future backward compatibility with the older TX15-B and TX10-B.
-- A collection of lost and/or vulnerable X10 vendor documentation PDFs from RCS, Leviton, and others.
+- Implementing support for the heyu aux engine, to allow using the X10 MR26A, WGL W800RF32A, or RFXCOM 310MHz receivers to monitor and transceive RF commands.
+- Support for serial over telnet, allowing use of networked (and possibly remote!) terminal services routers such as an MRV or Cisco 2509 in place of USB to serial adapters.
