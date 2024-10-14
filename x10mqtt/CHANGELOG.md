@@ -1,8 +1,14 @@
-## x10mqtt version v0.3.6
+## x10mqtt version v0.3.6-1
 
-### CHanges since 0.3.5-3
+### Changes since 0.3.6
+
+- Dump heyu config to addon log at runtime.
+
+
+### Changes since 0.3.5-3
 
 - Add configuration flag to enable using older (ha!) CM10A computer interfaces
+
 
 ### Changes since 0.3.5-1
 
