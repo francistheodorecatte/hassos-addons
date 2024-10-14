@@ -2,9 +2,9 @@
 
 
 
-This add-on provides MQTT control of X10 devices via CM11 and/or CM17A "Firecracker" RS232 serial interfaces and [heyu](https://github.com/HeyuX10Automation/heyu).
+This add-on provides MQTT control of X10 devices via CM10/CM11 and/or CM17A "Firecracker" RS232 serial interfaces and [heyu](https://github.com/HeyuX10Automation/heyu).
 
-CM11-compatible serial interfaces include:
+CM10 and CM11-compatible serial interfaces include:
 
 - X10 CM11A (NA)
 - X10 CM12U (EU)
@@ -12,6 +12,10 @@ CM11-compatible serial interfaces include:
 - RCA HC60RX (NA)
 - X10 CM10A (NA)
 - IBM HD16 (NA)
+- ACT TI103 (NA)
+- ACT TI213 (EU)
+- ACT TI203 (AU)
+- ACT TI223 (UK)
 - JV Digital Engineering XTB-232 (NA/EU)
 
 Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the CM15, heyu does not support and will never support.
@@ -23,8 +27,6 @@ ON, OFF, and DIM commands are supported. Support for RCS bidrectional thermostat
 ## Configuration
 
 Example add-on configuration via yaml:
-
-
 
 ```json
     "serial_port": "/dev/ttyUSB0",
@@ -60,7 +62,7 @@ Boolean.
 
 If you are using a CM17A "Firecracker" interface as your primary controller, enable this option (set to '**true**').  
 
-If you are *only* using a CM11 interface, set to '**false**'. 
+If you are *only* using a CM11 interface, leave it set to '**false**'. 
 
 Note that you can run the CM11 and CM17A together (see below for details).  Normally you would still set this option to **true** to use the CM17A as the primary X10 controller.
 
@@ -170,7 +172,7 @@ You can use both the CM17A for transmitting codes and a CM11 for receiving X10 u
 
 This is helpful if you have a CM11 that is not transmitting properly, or you simply wish to use RF transmission instead of power line for control.  Using the CM11 in tandem allows for X10 commands outside Home Assistant to be read by the add-on to mitigate the out-of-sync issues discussed in the section above.
 
-Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751 or RR501.
+Note that if you intend on using a CM17A with certain powerline only modules (usually hard-wired modules, such as the WS467/WS469), you will also need an RF-to-powerline transceiver module such as the TM751 or RR501 (see below).
 
 ## Troubleshooting and extra info
 
