@@ -43,13 +43,15 @@ else
 	bashio::log.info "CM11 is enabled"
 fi
 
-bashio::log.debug "Dumping heyu config..."
-heyu webhook config_dump | while IFS= read -r ROW; do
-	bashio::log.debug $ROW
-done
-
 # Start heyu engine manually
 heyu engine
+
+# Dump config with IFS shenanigans (resetting IFS when done)
+bashio::log.info "Dumping heyu config:"
+heyu webhook config_dump | while IFS= read -r ROW; do
+	bashio::log.info $ROW
+done
+IFS=$0
 
 # Run main script
 python3 -u /usr/local/bin/x10mqtt.py
