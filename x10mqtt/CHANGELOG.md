@@ -1,8 +1,14 @@
-## x10mqtt version v0.3.5-1
+## x10mqtt version v0.3.5-2
+
+### Changes since 0.3.5-1
+
+- quick math bugfix on the dimming value inversion fix
+
 
 ### Changes since 0.3.5
 
 - build supporting files for RCS protocol status reporting (python script changes TBD)
+- invert dimming values coming from Home Assistant
 
 
 ### Changes since 0.3.4-1

@@ -149,7 +149,7 @@ def dim(client, housecode, dimvalue):
   if cm17:
     heyucmd = "fdimbo"
   #take passed 0-255 dim value, invert, and round it down to the nearest value 0-22
-  heyudim = str(255 - int(round(int(dimvalue)/11.59, 0)))
+  heyudim = str(int(round(int(255 - dimvalue)/11.59, 0)))
   result = subprocess.run(["heyu", heyucmd.lower(), housecode.lower(), heyudim])
   if result.returncode:
     print("Error running heyu, return code: "+str(result.returncode))
