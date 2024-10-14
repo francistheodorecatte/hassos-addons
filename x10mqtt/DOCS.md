@@ -28,6 +28,7 @@ Example add-on configuration via yaml:
 
 ```json
     "serial_port": "/dev/ttyUSB0",
+    "cm10a_in_use": false,
     "cm17_in_use": false,
     "mqtt_host": "core-mosquitto",
     "mqtt_port": 1883,
@@ -46,6 +47,12 @@ The add-on can also be configured in Home Assistant web interface, via the "Conf
 #### Option: `serial_port`
 
 The serial port for the CM11A interface, which is usually connected via a USB-to-Serial device.  You can find this by going to "Supervisor" screen, selecting the "System" tab.   On the "Host" card, select the 3-dot option and select "Hardware"
+
+#### Option: `cm10a_in_use`
+
+Boolean.
+
+Enable this option (set to '**true**') if you are using a CM10A instead of a CM11A or compatible, as the serial protocol it uses is slightly different.
 
 #### Option: `cm17_in_use`
 

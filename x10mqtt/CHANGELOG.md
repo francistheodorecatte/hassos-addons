@@ -1,4 +1,8 @@
-## x10mqtt version v0.3.5-3
+## x10mqtt version v0.3.6
+
+### CHanges since 0.3.5-3
+
+- Add configuration flag to enable using older (ha!) CM10A computer interfaces
 
 ### Changes since 0.3.5-1
 
