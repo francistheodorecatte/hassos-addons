@@ -1,4 +1,10 @@
-## x10mqtt version v0.3.6-3
+## x10mqtt version v0.3.6-4
+
+### Changes since 0.3.6-3
+
+- Fix for heyu config dump
+- Updates to docs
+
 
 ### Changes since 0.3.6-2
 
