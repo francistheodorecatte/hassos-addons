@@ -1,8 +1,8 @@
-## x10mqtt version v0.3.5-2
+## x10mqtt version v0.3.5-3
 
 ### Changes since 0.3.5-1
 
-- quick math bugfix on the dimming value inversion fix
+- quick (hotfixed!!) math bugfix on the dimming value inversion fix
 
 
 ### Changes since 0.3.5
