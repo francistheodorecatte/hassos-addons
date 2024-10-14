@@ -43,7 +43,13 @@ else
 	bashio::log.info "CM11 is enabled"
 fi
 
+bashio::log.info "Dumping heyu config..."
+heyu webhook config_dump | while IFS= read -r ROW; do
+	bashio::log.info $ROW
+done
+
 # Start heyu engine manually
+bashio::log.info "Starting heyu relay_engine"
 heyu engine
 
 # Run main script
