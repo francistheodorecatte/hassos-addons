@@ -9,7 +9,7 @@ bashio::log.info "Configuring Heyu..."
 
 SERIAL=$(bashio::config "serial_port")
 HOUSECODE=$(bashio::config "rcs_housecodes")
-if bashio:config.true "cm10a_in_use" ; then
+if bashio::config.true "cm10a_in_use" ; then
 	bashio::log.info "CM10A is in use"
 	echo -e "TTY\t\t${SERIAL}\tCM10A" > "${HEYUCONFIG}"
 else

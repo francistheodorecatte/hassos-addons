@@ -1,4 +1,9 @@
-## x10mqtt version v0.3.6-2
+## x10mqtt version v0.3.6-3
+
+### Changes since 0.3.6-2
+
+- Hotfix for typo in CM10A configuration enablement
+
 
 ### Changes since 0.3.6
 
