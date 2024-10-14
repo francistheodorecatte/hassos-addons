@@ -18,7 +18,7 @@ Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains p
 
 When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
-ON, OFF, and DIM commands are supported.
+ON, OFF, and DIM commands are supported. Support for RCS bidrectional thermostat protocol TBD.
 
 ## Configuration
 
@@ -36,6 +36,9 @@ Example add-on configuration via yaml:
 	"cmd_topic": "x10/cmd",
 	"stat_topic": "x10/stat"
 	"dim_topic": "x10/dim"
+        "rcsreq_topic": "x10/rcsreq",
+        "rcscmd_topic": "x10/rcscmd",
+        "rcs_housecodes": "A,C",
 ```
 
 The add-on can also be configured in Home Assistant web interface, via the "Configuration" tab.
@@ -98,6 +101,27 @@ e.g. 'x10/dim/A1' to command A1 device.
 Payload is a numeric value 0-255
 
 Defaults to 'x10/dim' if not defined
+
+#### Option: `rcsreq_topic`
+
+rcsreq_topic is for status reports sent by x10mqtt for one or more RCS compatible thermostats.
+
+A JSON payload similar to the following will be sent if the RCS (or compatible) thermostat is configured to auto-send temperature changes:
+```json
+{"temperature": "75", "setpoint": "75", "mode": "COOL", "fan": "OFF", "sb_mode": "FALSE", "sb_delta": "8"}
+```
+
+See the RCS bidirectional protocol manual for more info on configuring autosend.
+
+#### Option: 'rcscmd_topic'
+
+rcscmd_topic is for sending commands to RCS compatible thermostats.
+
+Protocol implementation for commands is TBD.
+
+#### Option: 'rcs_housecodes'
+
+rcs_housecodes is a list of one or more RCS compatible thermostat housecodes. This can either be a single housecode letter, or a comma-separated list of multiple housecodes. This is used to build a section of status reporting scripts in the heyu configuration, among other things.
 
 ## Home Assistant Configuration
 

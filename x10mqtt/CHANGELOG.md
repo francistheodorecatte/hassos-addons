@@ -1,4 +1,9 @@
-## x10mqtt version v0.3.5
+## x10mqtt version v0.3.5-1
+
+### Changes since 0.3.5
+
+- build supporting files for RCS protocol status reporting (python script changes TBD)
+
 
 ### Changes since 0.3.4-1
 
