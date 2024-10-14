@@ -190,11 +190,11 @@ If you wish to monitor RF signals, or want RF commands repeated to the powerline
 - Leviton HCPRF-1TW
 - X10 CM15A (when configured correctly via mochad or AHP)
 
-Note that the X10 TM571 and its bidirectional control counterpart, the RR501, while having many cheap and available white-label rebrands, are single housecode only. While the HCPRF-1TW can transceive all housecodes (bi-directionally!), the CM15A can only do so while standalone if so configured with mochad (Linux/MacOS) or AHP (Windows), which is outside of the scope of this document.
+Note that the X10 TM571 and its bidirectional control counterpart, the RR501, while having many cheap and available white-label rebrands, are single housecode only. While the HCPRF-1TW can transceive all housecodes (bi-directionally!), the CM15A can only do so (unidirectionally, RF to PLC, while standalone) if so configured with mochad (Linux/MacOS) or AHP (Windows), which is outside of the scope of this document.
+
+Also note that the CM15A and HCPRF-1TW are both known to have poor range, and in the CM15A's case, poor reliability due to distinctly lacking in decoupling capacitors. That can be rectified with modifications, but that is also outside of the scope of this document.
 
 Support for the heyu aux engine, which in combination with another serial port and very cheap X10 MR26A adapters, allows for RF monitoring/transceiving, is planned for in the future.
-
-Note that the CM15A and HCPRF-1TW are both known to have poor range, and in the CM15A's case, poor reliability due to distinctly lacking in decoupling capacitors. That can be rectified with modifications, but YMMV.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
