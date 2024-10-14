@@ -147,7 +147,7 @@ switch:
     retain: false
 ```
 
-A `light` is configured in a similar way.  See the Home Assistant documentation for "MQTT Light" for details.
+A `light` is configured in a similar way.  See the Home Assistant documentation for "MQTT Light" for details. Dimming should work out of the box with `brightness_command_topic` set to the "x10/dim" topic.
 
 ### Potential Sync Issues
 
@@ -176,10 +176,22 @@ Note that if you intend on using a CM17A with certain powerline only modules (us
 
 ### Notes for X10 Newcomers
 
-- If you have split-phase or three phase power (such as in North American or German homes, respectively) and your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive coupler or active phase amplifier/repeater near or at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E.
+- If you have split-phase or three phase power (such as in North American or German homes, respectively) and your CM11 interface or tranceiver is on a different phase from your remote powerline modules, you will need to install a passive coupler or active phase amplifier/repeater near or at your breaker panel, such as the X10 PRO XPCR or Leviton HCA02-10E, or a dryer plug module like the SmartHome SignaLinc 4826 series.
 	- This usually shows up as an intermittent problem, and can be diagnosed by turning on a 240v or 400v appliance such as baseboard electric heat, heatpumps, electric stoves/ranges, or a resistive electric dryer to couple the phases together, before testing an X10 powerline transmission.
 	- Do not, **under any circumstance**, use a bare capacitor-based phase coupler! These are dangerous for reasons beyond the scope of this project, suffice to say, you should pay the extra money for an off-the-shelf coupler/repeater module for safety reasons.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances on the same breaker. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11 reference designs, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
+
+### Monitoring X10 RF (transceiving)
+
+If you wish to monitor RF signals, or want RF commands repeated to the powerline, you will need an RF to PLC transceiver such as:
+
+- X10 TM571
+- X10 RR501
+- X10 CM15A (when configured correctly via mochad or AHP)
+
+Note that the X10 TM571 and its bidirectional control counterpart, the RR501, while having many cheap and available white-label rebrands, are single housecode only. The CM15A can transceive all housecodes from RF to PLC if so configured, and in the reverse direction if you're careful about loops.
+
+Support for the heyu aux engine, which in combination with another serial port and very cheap X10 MR26A adapters, allows for RF monitoring/transceiving, is planned for in the future.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
@@ -206,7 +218,7 @@ If this procedure does not work, you either have a very noisy power system (see 
 
 ### Hardware Reliability
 
-It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the same case molding and FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel are also more reliable, but are much harder to come by.
+It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the same case molding and FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel (discernable from their lack of a battery compartment on the front) are also more reliable, and can still (as of late 2024) be found cheaply in older new-old-stock IBM Home Director starter kits with the duotone blue/white box art and Aptiva branding. 
 
 ## Support
 
