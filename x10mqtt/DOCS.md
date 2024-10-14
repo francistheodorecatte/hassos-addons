@@ -181,7 +181,7 @@ Note that if you intend on using a CM17A with certain powerline only modules (us
 	- Do not, **under any circumstance**, use a bare capacitor-based phase coupler! These are dangerous for reasons beyond the scope of this project, suffice to say, you should pay the extra money for an off-the-shelf coupler/repeater module for safety reasons.
 - If your CM11 locks up or does not transmit intermittently, you may need to install X10 filters on nearby appliances on the same breaker. Uninterruptable Power Supplies are particularly bad in this regard. For post-1999 CM11 reference designs, there is a modification you can do to mitigate this: [CM11A Overheating](https://web.archive.org/web/20080519131426/http://www.idobartana.com/hakb/CM11Aoverheating.htm)
 
-### Monitoring X10 RF (transceiving)
+### Controlling PLC devices with a CM17A/Monitoring X10 RF with a CM11A (transceiving)
 
 If you wish to monitor RF signals, or want RF commands repeated to the powerline, you will need an RF to PLC transceiver such as:
 
