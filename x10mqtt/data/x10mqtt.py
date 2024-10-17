@@ -198,7 +198,7 @@ def rcs_stat(client):
           print("RCS payload received: "+payload)
           client.publish(rcsreqtopic+"/"+payload['housecode'],payload, retain=True)
       except:
-         continue
+         pass
   except:
     os.mkfifo(FIFO)
 
