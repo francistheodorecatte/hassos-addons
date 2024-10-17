@@ -188,12 +188,15 @@ def dim(client, housecode, dimvalue):
 # '{"temperature": "75", "setpoint": "75", "mode": "HEAT", "fan": "AUTO", "sb_mode": "FALSE", "sb_delta": "6"}'
 
 def rcs_stat(client):
-  with open (FIFO) as fifo:
-    while True:
-      payload = fifo.read()
-      if len(payload) == 0:
-        break
-      client.publish(rcsreqtopic+"/"+payload, retain=True)
+  try:
+    with open (FIFO) as fifo:
+      while True:
+        payload = fifo.read()
+        if len(payload) == 0:
+          break
+        client.publish(rcsreqtopic+"/"+payload, retain=True)
+  except:
+    os.mkfifo(FIFO)
 
 #
 # Execute heyu monitor
