@@ -198,7 +198,7 @@ def rcs_stat(client):
             break
           print("RCS payload received: "+payload)
           msg = json.dumps(payload)
-          client.publish(rcsreqtopic+"/"+msg['housecode'],msg, retain=True)
+          client.publish(rcsreqtopic+"/"+msg['housecode'].lower(),payload, retain=True)
       except:
          pass
   except:
