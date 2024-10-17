@@ -194,6 +194,7 @@ def rcs_stat(client):
         payload = fifo.read()
         if len(payload) == 0:
           break
+        print("RCS payload received: "+payload)
         client.publish(rcsreqtopic+"/"+payload, retain=True)
   except:
     os.mkfifo(FIFO)
