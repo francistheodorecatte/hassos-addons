@@ -25,7 +25,7 @@ if [[ $X10_PresetLevel -eq 9 ]] || [[ $X10_PresetLEvel -eq 10 ]]; then
         sbdelt=`heyu rcs_req preset ${hu} 6 | cut -d "=" -f2- | cut -d ":" -f1 | awk '{gsub(/^ +| +$/,"")} {print $0}'`
 
         # assemble the payload and echo it down the pipe (will wait in background until x10mqtt reads it in)
-        payload="{\"temperature\": \"$temp\", \"setpoint\": \"$setpnt\", \"mode\": \"$mode\", \"fan\": \"$fanstat\", \"sb_mode\": \"$sbmode\", \"sb_delta\": \"$sbdelt\"}"
+        payload="{\"housecode\": \"$X10_Housecode\", \"temperature\": \"$temp\", \"setpoint\": \"$setpnt\", \"mode\": \"$mode\", \"fan\": \"$fanstat\", \"sb_mode\": \"$sbmode\", \"sb_delta\": \"$sbdelt\"}"
         echo $payload > $pipe &
 
 fi
