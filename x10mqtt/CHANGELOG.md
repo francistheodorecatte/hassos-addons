@@ -1,4 +1,4 @@
-## x10mqtt version v0.3.7-5
+## x10mqtt version v0.3.7-6
 
 ### Changes since 0.3.7-1
 

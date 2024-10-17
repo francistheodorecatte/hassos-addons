@@ -193,11 +193,12 @@ def rcs_stat(client):
     with open (FIFO) as fifo:
       try:
         while True:
-          payload = json.loads(fifo.read())
+          payload = fifo.read()
           if len(payload) == 0:
             break
           print("RCS payload received: "+payload)
-          client.publish(rcsreqtopic+"/"+payload['housecode'],payload, retain=True)
+          msg = json.dumps(payload)
+          client.publish(rcsreqtopic+"/"+msg['housecode'],msg, retain=True)
       except:
          pass
   except:
