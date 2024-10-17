@@ -1,4 +1,10 @@
-## x10mqtt version v0.3.6-4
+## x10mqtt version v0.3.7
+
+### Changes since 0.3.6-4
+
+- Reworked rcs_mon.sh to pipe output of rcs_req into a json payload
+- Initial test of x10mqtt rcs_stat MQTT message support
+- Updates to docs
 
 ### Changes since 0.3.6-3
 
