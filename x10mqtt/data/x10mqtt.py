@@ -47,6 +47,10 @@ except:
 
 rcvihc = ""
 
+# FIFO is our named pipe from rcs_mon.sh
+
+FIFO = '/tmp/rcsmon'
+
 # cmdtopic for commands.  Housecode is appended.
 # e.g. 'x10/cmd/A1' to command A1 device.
 #
@@ -175,14 +179,21 @@ def dim(client, housecode, dimvalue):
 #
 # the table for the complete list of setpoints, commands, etc. is on page 8 of the protocol manual.
 
-# RCS request
+# RCS status
 #
 # this is a _little bit_ simpler as heyu already has built-in macros for these functions.
 # heyu returns something like this for 'rcs_req preset A5 1' (current temperature):
 # 10/10 11:41:42  Temperature = 75    : hu A0  (_no_alias_)
-# loop through all presets 1-6, parse fields, and build a JSON object to return, e.g.:
+# a script on heyu's side calls presets 1-6, parses fields, and builds a JSON object to return via a named pipe, e.g.:
 # '{"temperature": "75", "setpoint": "75", "mode": "HEAT", "fan": "AUTO", "sb_mode": "FALSE", "sb_delta": "6"}'
 
+def rcs_stat(client):
+  with open (FIFO) as fifo:
+    while True:
+      payload = fifo.read()
+      if len(payload) == 0:
+        break
+      client.publish(rcsreqtopic+"/"+payload, retain=True)
 
 #
 # Execute heyu monitor
@@ -330,3 +341,6 @@ for line in monitor():
     rcviaddr(str(addrsearch.group(1)))
   if funcsearch:
     rcvifunc(client,str(funcsearch.group(1)))
+
+  # Check rcs_mon FIFO and send an MQTT message w/ payload
+  rcs_stat(client)
