@@ -20,6 +20,7 @@ import paho.mqtt.client as mqtt
 import re
 import subprocess
 import os
+import json
 
 try:
   broker = os.environ['MQTTBROKER']
@@ -192,7 +193,7 @@ def rcs_stat(client):
     with open (FIFO) as fifo:
       try:
         while True:
-          payload = fifo.read()
+          payload = json.loads(fifo.read())
           if len(payload) == 0:
             break
           print("RCS payload received: "+payload)
