@@ -4,21 +4,27 @@
 
 This add-on provides MQTT control of X10 devices via CM10/CM11 and/or CM17A "Firecracker" RS232 serial interfaces and [heyu](https://github.com/HeyuX10Automation/heyu).
 
-CM10 and CM11-compatible serial interfaces include:
+CM10&CM11-compatible serial interfaces include:
 
-- X10 CM11A (NA)
-- X10 CM12U (EU)
-- IBM HD11A (NA)
-- RCA HC60RX (NA)
 - X10 CM10A (NA)
-- IBM HD16 (NA)
+- IBM HD16 (NA)(CM10A)
+- X10 CM11A (NA)
+- Marmitek CM12U (EU)
+- IBM HD11A (NA)
+- RCA HC60RX (NA
 - ACT TI103 (NA)
 - ACT TI213 (EU)
 - ACT TI203 (AU)
 - ACT TI223 (UK)
 - JV Digital Engineering XTB-232 (NA/EU)
 
-Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the CM15, heyu does not support and will never support.
+Incompatible interfaces include:
+
+- SmartHome 1132B (NA)
+- X10 CM15A (NA)
+- Marmitek CM15Pro (EU)
+
+Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the aforementioned CM15, heyu does not support and will never support. Listening to 433MHz devices however, is possible with an RFX433 and the heyu aux engine (support for with is forthcoming).
 
 When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
@@ -223,7 +229,7 @@ If this procedure does not work, you either have a very noisy power system (see 
 
 ### Hardware Reliability
 
-It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the same case molding and FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel (discernable from their lack of a battery compartment on the front) are also more reliable, and can still (as of late 2024) be found cheaply in older new-old-stock IBM Home Director starter kits with the duotone blue/white box art and Aptiva branding. 
+It's recommended to avoid the CM11A and its white label rebrands, easily spotted as they all have the same case molding and FCC ID of B4SCM10A, in a 'modern' home (modern being codeword for 'full of devices with switching power supplies') for reliability reasons unless you're handy with a soldering iron. The XTB-232 is a much better experience out of the box as it's not prone to lockups or command collisions. The older CM10A and its HD16 relabel (discernable from their lack of a battery compartment on the front), while not "polite", are purportedly more reliable and can still (as of late 2024) be found cheaply in older new-old-stock IBM Home Director starter kits with the duotone blue/white box art and Aptiva branding.
 
 ## Support
 
@@ -231,9 +237,7 @@ At the moment, the best way to obtain support is via the thread on the Home Assi
 
 ## Authors and contributors
 
-The author of this add-on is [Mark Motley](https://github.com/mmotley999/) based some ideas gathered from [kevineye/docker-heyu-mqtt](https://github.com/kevineye/docker-heyu-mqtt), specifically around using 'heyu monitor' to check for changes.
-
-Note that I am a very new to Python, and welcome constructive ideas on how the main script can be improved.
+The original author of this add-on is [Mark Motley](https://github.com/mmotley999/) based some ideas gathered from [kevineye/docker-heyu-mqtt](https://github.com/kevineye/docker-heyu-mqtt), specifically around using 'heyu monitor' to check for changes.
 
 ## License
 
