@@ -1,9 +1,9 @@
-## x10mqtt version v0.3.7-2
+## x10mqtt version v0.3.7-3
 
 ### Changes since 0.3.7-1
 
 - Print received payload to console
-
+- Correctly append housecode to paho command + catch exceptions
 
 ### Changes since 0.3.7
 

@@ -190,12 +190,15 @@ def dim(client, housecode, dimvalue):
 def rcs_stat(client):
   try:
     with open (FIFO) as fifo:
-      while True:
-        payload = fifo.read()
-        if len(payload) == 0:
-          break
-        print("RCS payload received: "+payload)
-        client.publish(rcsreqtopic+"/"+payload, retain=True)
+      try:
+        while True:
+          payload = fifo.read()
+          if len(payload) == 0:
+            break
+          print("RCS payload received: "+payload)
+          client.publish(rcsreqtopic+"/"+payload['housecode'],payload, retain=True)
+      except:
+         continue
   except:
     os.mkfifo(FIFO)
 
@@ -262,6 +265,7 @@ def on_connect (client, userdata, flags, rc):
   print("Connected to MQTT broker, result code "+str(rc))
   client.subscribe(cmdtopic+"/+")
   client.subscribe(dimtopic+"/+")
+
 
 #
 # Callback for MQTT message received
