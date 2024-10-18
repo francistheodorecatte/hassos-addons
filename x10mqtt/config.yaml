@@ -1,0 +1,50 @@
+---
+name: X10 MQTT Gateway
+version: 0.3.8
+slug: x10mqtt
+description: MQTT gateway for the X10 CM11 and CM17
+url: https://github.com/francistheodorecatte/hassos-addons
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+uart: true
+map:
+  - config:rw
+  - ssl
+options:
+    serial_port: ""  
+    device_flags:
+        cm10a_in_use: false
+        cm17a_in_use: false
+    mqtt:
+        mqtt_host: core-mosquitto
+        mqtt_port: 1883
+        mqtt_user: ""
+        mqtt_pass: ""
+        cmd_topic: "x10/cmd"
+        stat_topic: "x10/stat"
+        dim_topic: "x10/dim"
+        rcsreq_topic: "x10/rcsreq"
+        rcscmd_topic: "x10/rcscmd"
+        rcs_housecodes: ""
+schema:
+    serial_port: device(subsystem=tty)
+    device_flags:
+        cm10a_in_use: bool
+        cm17a_in_use: bool
+    mqtt:
+        mqtt_host: str
+        mqtt_port: int
+        mqtt_user: str?
+        mqtt_pass: str?
+        cmd_topic: str
+        stat_topic: str
+        dim_topic: str
+        rcsreq_topic: str
+        rcscmd_topic: str
+        rcs_housecodes: str
+

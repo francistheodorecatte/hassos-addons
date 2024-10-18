@@ -1,4 +1,10 @@
-## x10mqtt version v0.3.7-9
+## x10mqtt version v0.3.8
+
+### Changes since 0.3.7-9
+
+- rcs_req now confirmed working
+- Migrate config to yaml
+- Updates to docs
 
 ### Changes since 0.3.7-1
 
