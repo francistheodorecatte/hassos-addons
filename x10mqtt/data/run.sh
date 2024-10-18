@@ -17,10 +17,11 @@ else
 fi
 echo -e "RCS_DECODE\t\tALL" >> "${HEYUCONFIG}"
 echo -e "START_ENGINE\t\tAUTO\n" >> "${HEYUCONFIG}"
-for FOO in ${HOUSECODE//,/ }; do
-	echo "SCRIPT -l rcs_mon_${FOO} ${FOO}6 preset rcvi :: /etc/heyu/rcs_mon.sh" >> "${HEYUCONFIG}"
-done
-
+if [ ! -z $HOUSECODE ]; then
+	for FOO in ${HOUSECODE//,/ }; do
+		echo "SCRIPT -l rcs_mon_${FOO} ${FOO}6 preset rcvi :: /etc/heyu/rcs_mon.sh" >> "${HEYUCONFIG}"
+	done
+fi
 
 # Export environment variables for the main script
 
