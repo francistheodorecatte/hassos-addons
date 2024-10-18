@@ -1,4 +1,8 @@
-## x10mqtt version v0.3.8-4
+## x10mqtt version v0.3.8-5
+
+### Changes since 0.3.4
+
+- Houscode config fix
 
 ### Changes since 0.3.8
 
