@@ -196,7 +196,7 @@ def rcs_stat(client):
         if len(payload) == 0:
           break
         print("RCS payload received: "+payload)
-        msg = json.dumps(payload)
+        msg = json.loads(payload)
         try:
           response = client.publish(rcsreqtopic+"/"+msg['housecode'].lower(), payload, retain=True)
           print(response)
