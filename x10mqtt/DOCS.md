@@ -24,7 +24,7 @@ Incompatible interfaces include:
 - X10 CM15A (NA)
 - Marmitek CM15Pro (EU)
 
-Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the aforementioned CM15, heyu does not support and will never support. Listening to 433MHz devices however, is possible with an RFX433 and the heyu aux engine (support for with is forthcoming).
+Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains power, the CM17A is for use in North America only as it uses 310MHz for transmission, not 433MHz. For 433MHz X10 RF controls, you would need to use the CM19, which along with the aforementioned CM15, heyu does not support and will never support. Listening to 433MHz devices however, is possible with an RFX433 and the heyu aux engine (support for which is forthcoming; see below).
 
 When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
@@ -35,19 +35,19 @@ ON, OFF, and DIM commands are supported. Support for RCS bidrectional thermostat
 Example add-on configuration via yaml:
 
 ```json
-    "serial_port": "/dev/ttyUSB0",
-    "cm10a_in_use": false,
-    "cm17_in_use": false,
-    "mqtt_host": "core-mosquitto",
-    "mqtt_port": 1883,
-    "mqtt_user": "",
-	"mqtt_pass": "",
-	"cmd_topic": "x10/cmd",
-	"stat_topic": "x10/stat"
-	"dim_topic": "x10/dim"
-        "rcsreq_topic": "x10/rcsreq",
-        "rcscmd_topic": "x10/rcscmd",
-        "rcs_housecodes": "A,C",
+serial_port: /dev/ttyS0
+cm10a_in_use: false
+cm17a_in_use: false
+mqtt_host: core-mosquitto
+mqtt_port: 1883
+mqtt_user: mqttuser
+mqtt_pass: mqttpass
+cmd_topic: x10/cmd
+stat_topic: x10/stat
+dim_topic: x10/dim
+rcsreq_topic: x10/rcsreq
+rcscmd_topic: x10/rcscmd
+rcs_housecodes: A,B,C
 ```
 
 The add-on can also be configured in Home Assistant web interface, via the "Configuration" tab.
@@ -193,16 +193,18 @@ Note that if you intend on using a CM17A with certain powerline only modules (us
 
 If you wish to monitor RF signals, or want RF commands repeated to the powerline, you will need an RF to PLC transceiver such as:
 
-- X10 TM571
-- X10 RR501
+- X10 TM571/PAT02
+- X10 RR501/PAT01
+- RCA HC50RX (RR501)
 - Leviton HCPRF-1TW
+- Insteon EZX10RF (allegedly when programmed via Smartenit Utility Suite)
 - X10 CM15A (when configured correctly via mochad or AHP)
 
 Note that the X10 TM571 and its bidirectional control counterpart, the RR501, while having many cheap and available white-label rebrands, are single housecode only. While the HCPRF-1TW can transceive all housecodes (bi-directionally!), the CM15A can only do so (unidirectionally, RF to PLC, while standalone) if so configured with mochad (Linux/MacOS) or AHP (Windows), which is outside of the scope of this document.
 
 Also note that the CM15A and HCPRF-1TW are both known to have poor range, and in the CM15A's case, poor reliability due to distinctly lacking in decoupling capacitors. That can be rectified with modifications, but that is also outside of the scope of this document.
 
-Support for the heyu aux engine, which in combination with another serial port and very cheap X10 MR26A adapters, allows for RF monitoring/transceiving, is planned for in the future.
+Support in this addon for running the heyu aux engine, which in combination with another serial port and very cheap X10 MR26A adapters, or an RFXCOM RFX310/433, is planned for in the future. This will allow directly monitoring RF, and tranceiving all housecodes to powerline (by default, selecting housecodes for RF to PLC transceiving is also planned) when used in combination with a CM11 and CM17.
 
 ### Slow/intermittent CM11 Serial Connection Issues
 
