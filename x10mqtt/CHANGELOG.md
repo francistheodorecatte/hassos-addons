@@ -1,8 +1,8 @@
-## x10mqtt version v0.3.8-1
+## x10mqtt version v0.3.8-2
 
 ### Changes since 0.3.8
 
-- Hotfix for when housecode config line is left empty
+- Hotfix(es) for when housecode config line is left empty
 - Also, sorry the config migration will wipe your config
 
 ### Changes since 0.3.7-9
