@@ -85,7 +85,7 @@ except:
 #
 # Defaults to 'x10/rcscmd' if not defined.
 try:
-  rcscmdtopic = os.environ['MQTTRCSREQTOPIC']
+  rcscmdtopic = os.environ['MQTTRCSCMDTOPIC']
 except:
   rcscmdtopic = "x10/rcscmd"
 
@@ -191,16 +191,18 @@ def dim(client, housecode, dimvalue):
 def rcs_stat(client):
   try:
     with open (FIFO) as fifo:
-      try:
-        while True:
-          payload = fifo.read()
-          if len(payload) == 0:
-            break
-          print("RCS payload received: "+payload)
-          msg = json.dumps(payload)
-          client.publish(rcsreqtopic+"/"+msg['housecode'].lower(),payload, retain=True)
-      except:
-         pass
+      while True:
+        payload = fifo.read()
+        if len(payload) == 0:
+          break
+        print("RCS payload received: "+payload)
+        msg = json.dumps(payload)
+        try:
+          response = client.publish(rcsreqtopic+"/"+msg['housecode'].lower(), payload, retain=True)
+          print(response)
+        except:
+           print("MQTT publish failed!")
+           break
   except:
     os.mkfifo(FIFO)
 
@@ -267,7 +269,7 @@ def on_connect (client, userdata, flags, rc):
   print("Connected to MQTT broker, result code "+str(rc))
   client.subscribe(cmdtopic+"/+")
   client.subscribe(dimtopic+"/+")
-
+  client.subscribe(rcscmdtopic+"/+")
 
 #
 # Callback for MQTT message received

@@ -1,9 +1,10 @@
-## x10mqtt version v0.3.7-7
+## x10mqtt version v0.3.7-8
 
 ### Changes since 0.3.7-1
 
 - Print received payload to console
 - Correctly append housecode to paho command + catch exceptions
+- Several bugfixes + hotfixes for RCS status
 
 ### Changes since 0.3.7
 
