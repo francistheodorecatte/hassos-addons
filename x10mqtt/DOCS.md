@@ -123,7 +123,7 @@ rcsreq_topic is for status reports sent by x10mqtt for one or more RCS compatibl
 
 A JSON payload similar to the following will be sent on to a subtopic `rcs_{housecode}` if the RCS (or compatible) thermostat is configured to auto-send temperature changes:
 ```json
-{"housecode: "A", "temperature": "75", "setpoint": "75", "mode": "COOL", "fan": "OFF", "sb_mode": "FALSE", "sb_delta": "8"}
+{"housecode": "A", "temperature": "75", "setpoint": "75", "mode": "COOL", "fan": "OFF", "sb_mode": "FALSE", "sb_delta": "8"}
 ```
 
 See the RCS bidirectional protocol manual for more info on configuring autosend.
