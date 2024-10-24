@@ -34,7 +34,7 @@ ON, OFF, and DIM commands are supported. Support for RCS bidrectional thermostat
 
 Example add-on configuration via yaml:
 
-```json
+```yaml
 serial_port: /dev/ttyS0
 cm10a_in_use: false
 cm17a_in_use: false
@@ -136,7 +136,7 @@ Protocol implementation for commands is TBD.
 
 #### Option: 'rcs_housecodes'
 
-rcs_housecodes is a list of one or more RCS compatible thermostat housecodes. This can either be a single housecode letter, or a comma-separated list of multiple housecodes. This is used to build a section of status reporting scripts in the heyu configuration, among other things.
+rcs_housecodes is a list of one or more RCS compatible thermostat housecodes. This can either be a single housecode letter, or a comma-separated list of multiple housecodes. This is used to build a section of status reporting scripts in the heyu configuration, among other things. Leave blank to disable the RCS thermostat status reporting feature.
 
 ## Home Assistant Configuration
 
