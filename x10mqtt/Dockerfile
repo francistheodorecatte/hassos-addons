@@ -10,28 +10,25 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Install packages
 # hadolint ignore=DL3003
 
-WORKDIR /opt/build
-
-RUN curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/refs/tags/v2.10.3.tar.gz" \
-        | tar zxvf - -C /opt/build
 RUN \
     apk add --no-cache --virtual .build-dependencies \
         tar \
 	curl \
 	build-base \
-	libc-dev
+	libc-dev \
+    && apk add --no-cache \
+	   python3 \
+           py3-paho-mqtt
+
+WORKDIR /opt/build
+RUN curl -L -s "https://github.com/HeyuX10Automation/heyu/archive/refs/tags/v2.10.3.tar.gz" \
+        | tar zxvf - -C /opt/build
 
 WORKDIR ./heyu-2.10.3
-
-ARG config-string="linux -noext0 -norfxm -nodmx -noore -nokaku"
-
-RUN sh ./Configure ${config-string}
+RUN sh ./Configure darwin -noext0 -norfxm -nodmx -noore -nokaku
 RUN make -j$(nproc)
 RUN mkdir -p /etc/heyu \
     && touch /etc/heyu/x10.conf
-RUN apk add --no-cache \
-	   python3 \
-           py3-paho-mqtt
 RUN make install
 RUN mkdir -p /usr/local/var/lock \
     && mkdir -p /usr/local/var/tmp/heyu	\

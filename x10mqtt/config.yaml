@@ -1,6 +1,7 @@
 ---
 name: X10 MQTT Gateway
-version: 0.4.0-1
+version: 0.4.1
+image: x10mqtt
 slug: x10mqtt
 description: MQTT gateway for the X10 CM11 and CM17
 url: https://github.com/francistheodorecatte/hassos-addons
