@@ -33,7 +33,7 @@ RUN make install
 RUN mkdir -p /usr/local/var/lock \
     && mkdir -p /usr/local/var/tmp/heyu	\
 	&& chmod 777 /usr/local/var/tmp/heyu \
-	&& chmod 777 /usr/local/var/lock \
+	&& chmod 777 /usr/local/var/lock
 RUN apk del --purge .build-dependencies \
     && rm -fr /tmp/* \
 	&& rm -rf /opt/build/* 
