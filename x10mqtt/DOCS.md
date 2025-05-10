@@ -28,7 +28,7 @@ Note that while the CM11 has EU derivatives meant for use with 240v/50Hz mains p
 
 When using a CM11 interface, the addon also monitors for X10 changes that occur outside of Home Assistant (e.g. the use of X10 remote controls) and updates the status in Home Assistant.
 
-ON, OFF, and DIM commands are supported. Support for RCS bidrectional thermostat protocol TBD.
+ON, OFF, and DIM commands (DIM being slightly broken!) are supported. Support for RCS bidrectional thermostat protocol TBD.
 
 ## Configuration
 

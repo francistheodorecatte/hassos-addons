@@ -7,7 +7,7 @@ The X10 to MQTT add-on provides for X10 control when using a CM11-compatible ser
 X10mqtt currently supports the following X10 commands:
 - On
 - Off
-- Dim
+- Dim (slightly broken)
 
 ### Key features
 

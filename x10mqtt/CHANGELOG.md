@@ -1,6 +1,10 @@
-## x10mqtt version v0.3.8-5
+## x10mqtt version v0.4.0
 
-### Changes since 0.3.4
+### Changes since 0.3.9
+
+- Build failure fix(es) for Heyu
+
+### Changes since 0.3.8-4
 
 - Houscode config fix
 
